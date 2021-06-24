@@ -1,11 +1,22 @@
-# legou
+## 乐购（移动购物demo）
 
-## Project setup
-```
-npm install
-```
+###### 记录在不凡学院学习的第三阶段
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+
+
+
+
+##### 实现的功能：
+
+1. 地图API 搜索定位  
+2. 商品搜索
+3. 购物车添加和收藏（本地存储）
+4. 专题文章下拉加载（van-list）
+5. 商品分类（keep-alive）
+6. 地址管理（三级联动）
+
+##### 未实现功能：
+
+1.  注册登录
+2. 订单功能未实现
+3. 支付功能未实现

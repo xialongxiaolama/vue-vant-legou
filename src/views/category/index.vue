@@ -42,46 +42,46 @@
 </template>
 
 <script>
-import { indexaction, currentaction } from "../../api/category/index";
+import { indexaction, currentaction } from '../../api/category/index'
 export default {
-  name: "category",
+  name: 'category',
   data() {
     return {
       num: 1,
       activeKey: 0,
       navlist: [],
-      sublist: [],
-    };
+      sublist: []
+    }
   },
   computed: {
     number() {
-      return `商品搜索,共有${this.num}件商品`;
-    },
+      return `商品搜索,共有${this.num}件商品`
+    }
   },
   methods: {
     // 初始化数据
     init() {
       indexaction().then((res) => {
-        this.navlist = res.data.categoryList;
+        this.navlist = res.data.categoryList
         currentaction({ id: res.data.categoryList[0].id }).then((res) => {
-          this.sublist = res.data.data.currentOne;
-        });
-      });
+          this.sublist = res.data.data.currentOne
+        })
+      })
     },
-    //监听当前类型
+    // 监听当前选中分栏
     onChange(index) {
+      //请求当前栏的商品数据
       currentaction({
-        id: this.navlist[index].id,
+        id: this.navlist[index].id
       }).then((res) => {
-        this.sublist = res.data.data.currentOne;
-      });
-    },
+        this.sublist = res.data.data.currentOne
+      })
+    }
   },
-
   created() {
-    this.init();
-  },
-};
+    this.init()
+  }
+}
 </script>
 
 <style lang="scss" scoped>

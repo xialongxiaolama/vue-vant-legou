@@ -27,7 +27,6 @@ export default {
 
       //获取详情数据
       detailaction({ id: id }).then((res) => {
-        console.log(res);
         this.imgList = res.data.data.content;
         this.recommendList = res.data.recommendList;
       });

@@ -48,98 +48,99 @@
 </template>
 
 <script>
-import { cartList, deleteAction } from "../../api/cart/index";
-import { Toast } from "vant";
-import { Dialog } from "vant";
+import { cartList, deleteAction } from '../../api/cart/index'
+import { Toast } from 'vant'
+import { Dialog } from 'vant'
 export default {
   data() {
     return {
       cartList: [],
-      orderList: [],
-    };
+      orderList: []
+    }
   },
   computed: {
     // 总价
     num() {
       return this.cartList.reduce((total, item) => {
         if (item.checked) {
-          return (total += item.number * item.retail_price);
+          return (total += item.number * item.retail_price)
         } else {
-          return total;
+          return total
         }
-      }, 0);
+      }, 0)
     },
     //全选按钮
     isAllChecked: {
       // 全选按钮依赖单选按钮 , 当单选按钮值发生改变 , 监听数据变化
       get() {
         //将选中的商品存储在本地
-        this.orderList = this.cartList.filter((item) => item.checked);
-        localStorage.setItem("orderList", JSON.stringify(this.orderList));
+        this.orderList = this.cartList.filter((item) => item.checked)
+        localStorage.setItem('orderList', JSON.stringify(this.orderList))
         if (this.cartList.length == 0) {
-          return false;
+          return false
         } else {
-          return this.cartList.every((item) => item.checked);
+          return this.cartList.every((item) => item.checked)
         }
       },
       set() {
-        this.cartList.forEach((item) => (item.checked = !item.checked));
-      },
-    },
+        const flag = this.cartList.every((el) => el.checked)
+        this.cartList.forEach((item) => (item.checked = !flag))
+      }
+    }
   },
   methods: {
     init() {
-      const openId = localStorage.getItem("openId");
+      const openId = localStorage.getItem('openId')
       cartList({ openId: openId }).then((res) => {
         res.data.data.forEach((item) => {
-          item.checked = false;
-        });
-        this.cartList = res.data.data;
-      });
+          item.checked = false
+        })
+        this.cartList = res.data.data
+      })
     },
     //删除商品
     delGood(id) {
       Dialog.confirm({
-        title: "删除商品?",
-        message: "点击确认移除购物车",
+        title: '删除商品?',
+        message: '点击确认移除购物车'
       })
         .then(() => {
           deleteAction({
-            id: id,
+            id: id
           }).then((res) => {
-            this.init();
-          });
+            this.init()
+          })
         })
         .catch(() => {
-          this.init();
-          return;
-        });
+          this.init()
+          return
+        })
     },
     //点击下单
     goOrder() {
-      const flag = this.cartList.some((item) => item.checked);
+      const flag = this.cartList.some((item) => item.checked)
       // 如果有选中商品 跳转下单页
       if (flag) {
         this.$router.push({
-          name: "order",
-          query: { list: this.orderList, price: this.num },
-        });
+          name: 'order',
+          query: { list: this.orderList, price: this.num }
+        })
       } else {
-        Toast("您未选择商品!");
+        Toast('您未选择商品!')
       }
     },
     // 跳转到购买页面
     goBuy(id) {
       this.$router.push({
-        name: "buy",
-        query: { id, openId: localStorage.getItem("openId") },
-      });
-    },
+        name: 'buy',
+        query: { id, openId: localStorage.getItem('openId') }
+      })
+    }
   },
   created() {
-    this.init();
-  },
-};
+    this.init()
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -162,7 +163,7 @@ export default {
       top: 50%;
       left: -10px;
       transform: translateY(-50%);
-      content: "";
+      content: '';
       width: 5px;
       height: 5px;
       box-sizing: border-box;
