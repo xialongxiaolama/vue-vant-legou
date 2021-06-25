@@ -99,7 +99,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  // mode: "history", 打开历史模式打包空白
   base: process.env.BASE_URL,
   routes,
 });

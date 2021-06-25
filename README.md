@@ -29,7 +29,7 @@
 
 ##### 搜索
 
-![](https://gitee.com/xialongxiaolama/vue-vant-legou/blob/master/public/images/%E6%90%9C%E7%B4%A2%E8%AE%B0%E5%BD%95%E5%AE%9E%E7%8E%B0.png)
+![img](https://gitee.com/xialongxiaolama/vue-vant-legou/blob/master/public/images/%E6%90%9C%E7%B4%A2%E8%AE%B0%E5%BD%95%E5%AE%9E%E7%8E%B0.png)
 
 ##### 购物车
 
