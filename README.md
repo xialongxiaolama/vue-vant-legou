@@ -25,7 +25,7 @@
 
 ##### 首页预览
 
-![img](https://gitee.com/xialongxiaolama/vue-vant-legou/blob/master/public/images/%E9%A6%96%E9%A1%B5%E9%A2%84%E8%A7%88.png)
+![img](../public/images/首页.png)
 
 ##### 搜索
 
